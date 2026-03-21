@@ -1,0 +1,392 @@
+/* ═══════════════════════════════════════════════
+   FLAGVAULT — PADDING ORACLE CHALLENGE STYLES
+   Imports & extends shared style.css
+═══════════════════════════════════════════════ */
+
+/* ─── CHALLENGE PANEL ─── */
+.chall-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.chall-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.chall-meta-block {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+}
+.chall-meta-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+.chall-meta-val {
+  font-family: var(--font-hud);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ─── CIPHERTEXT DISPLAY ─── */
+.ct-display {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.4rem;
+  position: relative;
+}
+.ct-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  color: var(--accent2);
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.ct-value {
+  font-size: 0.78rem;
+  color: var(--accent3);
+  word-break: break-all;
+  line-height: 1.9;
+}
+.btn-copy {
+  background: transparent;
+  border: 1px solid var(--border2);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  margin-top: 0.8rem;
+  transition: all var(--transition);
+}
+.btn-copy:hover {
+  background: rgba(0,232,200,0.07);
+  box-shadow: 0 0 10px var(--glow-c);
+}
+
+/* ─── ORACLE PANEL ─── */
+.oracle-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+.oracle-header {
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  padding: 0.9rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.oracle-badge {
+  font-family: var(--font-hud);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent2);
+  padding: 0.25rem 0.7rem;
+  border: 1px solid rgba(255,45,107,0.35);
+  border-radius: 20px;
+  background: rgba(255,45,107,0.07);
+  animation: oracle-blink 1.8s infinite;
+}
+@keyframes oracle-blink {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0.45; }
+}
+.oracle-body {
+  padding: 1.5rem;
+}
+.oracle-desc {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+  border-left: 2px solid var(--border2);
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Oracle textarea */
+.oracle-textarea {
+  width: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--accent3);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 0.75rem 1rem;
+  resize: vertical;
+  transition: border-color var(--transition);
+}
+.oracle-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(0,232,200,0.1);
+}
+.oracle-textarea::placeholder { color: var(--text-dim); }
+
+/* Oracle Response Box */
+.oracle-response {
+  margin-top: 1.2rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.oracle-resp-header {
+  background: rgba(0,0,0,0.3);
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+.resp-time {
+  font-size: 0.62rem;
+  color: var(--text-dim);
+}
+.oracle-resp-body {
+  padding: 1rem;
+}
+.oracle-resp-body pre {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.valid-resp   { color: var(--accent); }
+.invalid-resp { color: var(--accent2); }
+.error-resp   { color: var(--accent3); }
+
+/* Oracle Log */
+.oracle-log {
+  margin-top: 1.2rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  max-height: 220px;
+  overflow-y: auto;
+}
+.log-header {
+  position: sticky; top: 0;
+  background: rgba(0,0,0,0.5);
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(4px);
+}
+.btn-clear-log {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 1.5px;
+  padding: 0.2rem 0.6rem;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+}
+.btn-clear-log:hover { color: var(--accent2); border-color: var(--accent2); }
+.log-entry {
+  display: grid;
+  grid-template-columns: 55px 1fr 90px;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  border-bottom: 1px solid rgba(22,64,96,0.3);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  align-items: center;
+}
+.log-entry:last-child { border-bottom: none; }
+.log-num   { color: var(--text-dim); }
+.log-ct    { color: var(--accent3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.log-valid { color: var(--accent); }
+.log-invalid { color: var(--accent2); }
+
+/* ─── HINTS GRID ─── */
+.hints-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.hint-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition);
+}
+.hint-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform var(--transition);
+}
+.hint-card:hover { background: var(--surface2); border-color: var(--border2); }
+.hint-card:hover::after { transform: scaleX(1); }
+.hint-num {
+  font-family: var(--font-hud);
+  font-size: 2rem;
+  font-weight: 900;
+  color: rgba(0,232,200,0.1);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.hint-title {
+  font-family: var(--font-hud);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+.hint-body {
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+
+/* ─── CODE BLOCK ─── */
+.code-block {
+  background: #020a10;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  line-height: 1.9;
+  overflow-x: auto;
+  color: var(--text);
+  margin-top: 0.75rem;
+}
+.code-c  { color: #4a7a6a; font-style: italic; }   /* comment */
+.code-k  { color: #ff6b9d; }                        /* keyword */
+.code-s  { color: var(--accent3); }                 /* string */
+.code-fn { color: #7dd3fc; }                        /* function */
+.code-n  { color: #c084fc; }                        /* number */
+
+/* ─── FLAG INPUT OVERRIDES ─── */
+.flag-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.flag-prefix {
+  position: absolute;
+  left: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--accent);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 2;
+}
+.flag-input-wrap .form-control {
+  padding-left: 7.8rem;
+  letter-spacing: 1px;
+}
+.form-control {
+  width: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-hi);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.75rem 1rem;
+  transition: border-color var(--transition);
+}
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(0,232,200,0.1);
+}
+.form-control::placeholder { color: var(--text-dim); }
+.form-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.form-hint {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+}
+.form-group { margin-bottom: 1.2rem; }
+.form-row {
+  display: grid;
+  gap: 1rem;
+}
+
+/* ─── TOAST ─── */
+.toast {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius);
+  padding: 0.75rem 1.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  z-index: 9999;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ─── HIDDEN FLAG (for CTF, obfuscated in JS) ─── */
+/* The actual flag logic is in script.js */
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 600px) {
+  .chall-info-grid { grid-template-columns: 1fr 1fr; }
+  .hints-grid { grid-template-columns: 1fr; }
+  .oracle-header { flex-direction: column; align-items: flex-start; }
+  .log-entry { grid-template-columns: 40px 1fr; }
+  .log-valid, .log-invalid { display: none; }
+}

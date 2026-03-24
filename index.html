@@ -189,12 +189,6 @@ code,.mono{font-family:var(--font-mono);background:rgba(0,232,200,0.06);border:1
   <a class="nav-brand" href="#">
     <span class="bracket">[</span><span class="brand-flag">⚑</span>FLAG<span style="color:var(--accent)">VAULT</span><span class="bracket">]</span>
   </a>
-  <ul class="nav-links">
-    <li><a href="#">Home</a></li>
-    <li><a href="#" class="active">Challenges</a></li>
-    <li><a href="#">Scoreboard</a></li>
-    <li><a href="#">Rules</a></li>
-  </ul>
   <div class="nav-status"><div class="status-dot"></div>ORACLE ONLINE</div>
 </nav>
 
@@ -206,30 +200,7 @@ code,.mono{font-family:var(--font-mono);background:rgba(0,232,200,0.06);border:1
     <p class="page-desc">The server decrypts AES-CBC messages and tells you whether padding is valid or not. Can you recover the hidden flag?</p>
   </header>
 
-  <div class="stats-strip">
-    <div class="stat-box"><span class="stat-val">500</span><span class="stat-label">Points</span></div>
-    <div class="stat-box"><span class="stat-val red">HARD</span><span class="stat-label">Difficulty</span></div>
-    <div class="stat-box"><span class="stat-val amber">12</span><span class="stat-label">Solves</span></div>
-    <div class="stat-box"><span class="stat-val">CRYPTO</span><span class="stat-label">Category</span></div>
-  </div>
-
-  <div class="sec-divider"><h3>Challenge Brief</h3></div>
-  <div class="chall-panel">
-    <div class="chall-info-grid">
-      <div class="chall-meta-block"><div class="chall-meta-label">⚙ Author</div><div class="chall-meta-val">harshilcyber2026</div></div>
-      <div class="chall-meta-block"><div class="chall-meta-label">📁 Category</div><div class="chall-meta-val">Cryptography / Web</div></div>
-      <div class="chall-meta-block"><div class="chall-meta-label">🏆 Points</div><div class="chall-meta-val">500 pts</div></div>
-      <div class="chall-meta-block"><div class="chall-meta-label">📡 Oracle</div><div class="chall-meta-val mono">POST /oracle</div></div>
-    </div>
-    <div class="divider"></div>
-    <div class="desc-block">
-      <p>A vulnerable server is running an <strong>AES-128-CBC</strong> decryption endpoint. After decrypting your submitted ciphertext, it only tells you one thing — <em>whether PKCS#7 padding is valid or invalid</em>. No plaintext is ever returned.</p>
-      <br>
-      <p>This is a classic <strong>Padding Oracle</strong> scenario. Using the oracle's yes/no response, a skilled attacker can recover the full plaintext byte-by-byte without the key. The encrypted flag is waiting to be extracted.</p>
-    </div>
-  </div>
-
-  <div class="sec-divider"><h3>Intercepted Ciphertext (Base64)</h3></div>
+    <div class="sec-divider"><h3>Intercepted Ciphertext (Base64)</h3></div>
   <div class="chall-panel">
     <div class="ct-display">
       <div class="ct-label">CIPHERTEXT // AES-128-CBC // PKCS7</div>
@@ -269,30 +240,6 @@ code,.mono{font-family:var(--font-mono);background:rgba(0,232,200,0.06);border:1
         </div>
         <div id="oracle-log"></div>
       </div>
-    </div>
-  </div>
-
-  <div class="sec-divider"><h3>Attack Guide</h3></div>
-  <div class="hints-grid">
-    <div class="hint-card">
-      <div class="hint-num">01</div>
-      <div class="hint-title">Understand CBC Decryption</div>
-      <div class="hint-body">In AES-CBC, plaintext block N = Decrypt(C_N) XOR C_{N-1}. The IV is C_{-1}. You fully control the IV bytes you send to the oracle.</div>
-    </div>
-    <div class="hint-card">
-      <div class="hint-num">02</div>
-      <div class="hint-title">Flip IV Bytes</div>
-      <div class="hint-body">Modify the last byte of the IV (0–255). When the oracle returns VALID, <code>\x01</code> padding was achieved. Solve: <code>P[15] = 0x01 XOR guess XOR IV[15]</code></div>
-    </div>
-    <div class="hint-card">
-      <div class="hint-num">03</div>
-      <div class="hint-title">Recover All 16 Bytes</div>
-      <div class="hint-body">For each padding target (0x01→0x10), recover one more byte. Work right-to-left across all 16 bytes of each block.</div>
-    </div>
-    <div class="hint-card">
-      <div class="hint-num">04</div>
-      <div class="hint-title">Automate with Python</div>
-      <div class="hint-body">Manual attacks need up to 256×16 queries. Write a script using the template below to automate oracle calls and recover the full plaintext.</div>
     </div>
   </div>
 

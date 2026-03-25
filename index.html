@@ -279,26 +279,11 @@ plaintext = b<span class="code-s">""</span>
 <span class="code-fn">print</span>(<span class="code-s">"[+] Flag:"</span>, plaintext)</pre>
   </div>
 
-  <div class="sec-divider"><h3>Submit Flag</h3></div>
-  <div class="chall-panel">
-    <div class="form-group">
-      <label class="form-label">Flag — format: <code>FlagVault{...}</code></label>
-      <div class="flag-input-wrap">
-        <span class="flag-prefix">FlagVault{</span>
-        <input type="text" class="form-control" id="flag-input" placeholder="your_flag_here" />
-      </div>
-      <p class="form-hint" style="margin-top:.5rem">Recover the plaintext via the Padding Oracle, extract the flag, and submit it above.</p>
-    </div>
-    <button class="btn btn-primary" onclick="submitFlag()"><i class="fa fa-flag"></i>&nbsp; SUBMIT FLAG</button>
-    <div class="submit-result" id="flag-result"></div>
-  </div>
-
   <div style="margin-top:2rem;display:flex;gap:.6rem;flex-wrap:wrap">
     <span class="tag tag-red">AES-CBC</span>
     <span class="tag tag-amber">Padding Oracle</span>
     <span class="tag tag-green">Cryptography</span>
     <span class="tag tag-purple">PKCS7</span>
-    <span class="tag tag-red">500 pts</span>
   </div>
 
 </main>
